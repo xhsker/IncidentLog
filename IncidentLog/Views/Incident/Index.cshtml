@@ -60,9 +60,9 @@
         {
             <tr>
                 <td align="center">
-                    @Convert.ToDateTime(item.IncidentDate).ToString("MMM dd, yyyy")
+                    @Convert.ToDateTime(item.IncidentDate).ToString("MMM d, yyyy")
                 </td>
-                <td align="center" dataformatstring="{HH:mm}">
+                <td align="center">
                     @Html.DisplayFor(modelItem => item.IncidentTime)
                 </td>
                 <td align="center">
@@ -73,7 +73,7 @@
                 </td>
 
                 <td align="center">
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id, @class = "text-navy" }) |
                     @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 </td>
