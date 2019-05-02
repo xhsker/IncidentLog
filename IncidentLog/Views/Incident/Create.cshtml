@@ -1,0 +1,103 @@
+﻿@model IncidentLog.Models.Incident
+
+@{
+    ViewBag.Title = "Enter New Incident";
+}
+
+<h2>New Incident</h2>
+
+
+<link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/dot-luv/jquery-ui.css" rel="stylesheet" />
+<link href="~/Content/jquery.timepicker.css" rel="stylesheet" />
+<link href="~/Content/jquery-ui-timepicker-addon.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-timepicker-addon.js"></script>
+    <script src="~/Scripts/jquery-ui-timepicker-addon.min.js"></script>
+    <script src="~/Scripts/jquery.timepicker.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#IncidentDate").datepicker({
+                dateFormat: "MM dd, yy",
+                changeMonth: true,
+                changeYear: true,
+                toolbarPlacement: 'right',
+
+            })
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#IncidentTime").timepicker({
+                default : "now",
+                timeFormat: "G:i",
+                show2400 : true,
+                showSecond: false,
+            })
+        });
+    </script>
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Incident</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group" >
+            @Html.LabelFor(model => model.IncidentDate, htmlAttributes: new { @class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IncidentDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IncidentDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IncidentTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IncidentTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IncidentTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Unit, "Unit", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Unit", null, "Select Unit", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Unit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Incident1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Incident1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Incident1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Summary, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Summary, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Summary, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-outline-dark" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Current Incidents", "Index")
+</div>

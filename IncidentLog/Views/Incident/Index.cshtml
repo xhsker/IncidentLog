@@ -1,0 +1,83 @@
+﻿@model IEnumerable<IncidentLog.Models.Incident>
+
+@{
+    ViewBag.Title = "Current Incidents";
+}
+
+<h2>Current Incident</h2>
+
+<style>
+    #entry {
+        font-family: Tahoma;
+        border-collapse: collapse;
+        width: 100%;
+        font-size: small;
+    }
+
+        #entry th {
+            border: double;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: forestgreen;
+            color: navy;
+        }
+
+        #entry td {
+            border: 1px solid;
+            padding: 8px;
+            width: auto
+        }
+
+        #entry tr:nth-child(even) {
+            background-color: darkgray;
+        }
+</style>
+ 
+    <p>
+        @Html.ActionLink("Enter New Incident", "Create")
+    </p>
+    <table class="table" id="entry">
+        <tr>
+            <th align="center">
+                @Html.DisplayNameFor(model => model.IncidentDate)
+            </th>
+            <th align="center">
+                @Html.DisplayNameFor(model => model.IncidentTime)
+            </th>
+            <th align="center">
+                @Html.DisplayNameFor(model => model.UnitType.Department)
+            </th>
+            <th align="center">
+                @Html.DisplayNameFor(model => model.Incident1)
+            </th>
+            <th align="center">
+                Action
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td align="center">
+                    @Convert.ToDateTime(item.IncidentDate).ToString("MMM dd, yyyy")
+                </td>
+                <td align="center" dataformatstring="{HH:mm}">
+                    @Html.DisplayFor(modelItem => item.IncidentTime)
+                </td>
+                <td align="center">
+                    @Html.DisplayFor(modelItem => item.UnitType.Department)
+                </td>
+                <td align="center">
+                    @Html.DisplayFor(modelItem => item.Incident1)
+                </td>
+
+                <td align="center">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>

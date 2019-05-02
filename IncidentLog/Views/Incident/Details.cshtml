@@ -1,0 +1,77 @@
+﻿@model IncidentLog.Models.Incident
+
+@{
+    ViewBag.Title = "Incident Details";
+}
+    <style>
+        #entry {
+            font-family: Tahoma;
+            border-collapse: separate;
+            font-size: small;
+        }
+
+            #entry dt {
+                padding-top: 8px;
+                padding-bottom: 8px;
+                background-color: forestgreen;
+                color: navy
+            }
+
+            #entry dl {
+                border: 1px solid;
+                padding: 8px;
+            }
+
+            #entry tr:nth-child(even) {
+                background-color: lightgrey;
+            }
+    </style>
+<h2>Incident Details</h2>
+
+<div>
+    <h4>Incident</h4>
+    <hr />
+    <dl class="dl-horizontal" id="entry">
+        <dt>
+            @Html.DisplayNameFor(model => model.IncidentDate)
+        </dt>
+
+        <dd>
+            @Convert.ToDateTime(Model.IncidentDate).ToString("MMM dd, yyyy")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncidentTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncidentTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitType.Department)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitType.Department)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Incident1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Incident1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Summary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Summary)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit Incident", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Current Incident", "Index")
+</p>
