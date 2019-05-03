@@ -32,7 +32,7 @@
     <h4>Incident</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="bg-success">
             @Html.DisplayNameFor(model => model.IncidentDate)
         </dt>
 
@@ -40,21 +40,21 @@
             @Convert.ToDateTime(Model.IncidentDate).ToString("MMM dd, yyyy")
         </dd>
 
-        <dt>
+        <dt class="bg-success">
             @Html.DisplayNameFor(model => model.IncidentTime)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.IncidentTime)
         </dd>
-        <dt>
+        <dt class="bg-success">
             @Html.DisplayNameFor(model => model.UnitType.Department)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.UnitType.Department)
         </dd>
-        <dt>
+        <dt class="bg-success">
             @Html.DisplayNameFor(model => model.Incident1)
         </dt>
 
@@ -62,7 +62,7 @@
             @Html.DisplayFor(model => model.Incident1)
         </dd>
 
-        <dt>
+        <dt class="bg-success">
             @Html.DisplayNameFor(model => model.Summary)
         </dt>
 

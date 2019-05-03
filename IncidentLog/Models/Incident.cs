@@ -27,6 +27,7 @@ namespace IncidentLog.Models
         [Display(Name = "Type of Incident")]
         public string Incident1 { get; set; }
         [Display(Name = "Summary of Incident")]
+        [DataType(DataType.MultilineText)]
         public string Summary { get; set; }
     
         public virtual UnitType UnitType { get; set; }
